@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-sensor
+      author: stepan
+      changes:
+        - createTable:
+            tableName: sensor
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(30)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: model
+                  type: varchar(15)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: type
+                  type: type_enum
+                  constraints:
+                    nullable: false
+              - column:
+                  name: unit
+                  type: unit_enum
+                  constraints:
+                    nullable: false
+              - column:
+                  name: range_from
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: range_to
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: location
+                  type: varchar(40)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(200)
+                  constraints:
+                    nullable: false
