@@ -8,4 +8,4 @@ databaseChangeLog:
             sql: CREATE TYPE unit_enum AS ENUM ('bar', 'voltage', '°C', '%');
         - sql:
             dbms: postgresql
-            sql: CREATE TYPE type_enum AS ENUM ('Pressure', 'Voltage', 'Temperature', 'Humidity');
+            sql: CREATE TYPE type_enum AS ENUM ('pressure', 'voltage', 'temperature', 'humidity');

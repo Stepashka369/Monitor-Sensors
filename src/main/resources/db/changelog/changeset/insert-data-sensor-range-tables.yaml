@@ -1,0 +1,104 @@
+databaseChangeLog:
+  - changeSet:
+      id: insert-data-sensor-table
+      author: stepan
+      changes:
+        - insert:
+            tableName: _range
+            columns:
+              - column:
+                  name: _from
+                  value: 100
+              - column:
+                  name: _to
+                  value: 1000
+        - insert:
+            tableName: sensor
+            columns:
+              - column:
+                  name: name
+                  value: barometer
+              - column:
+                  name: model
+                  value: ac-23
+              - column:
+                  name: type
+                  value: humidity
+              - column:
+                  name: unit
+                  value: bar
+              - column:
+                  name: range_id
+                  value: 1
+              - column:
+                  name: location
+                  value: kitchen
+              - column:
+                  name: description
+                  value: description
+        - insert:
+            tableName: _range
+            columns:
+              - column:
+                  name: _from
+                  value: 25
+              - column:
+                  name: _to
+                  value: 80
+        - insert:
+            tableName: sensor
+            columns:
+              - column:
+                  name: name
+                  value: thermometer
+              - column:
+                  name: model
+                  value: kd-678
+              - column:
+                  name: type
+                  value: temperature
+              - column:
+                  name: unit
+                  value: °C
+              - column:
+                  name: range_id
+                  value: 2
+              - column:
+                  name: location
+                  value: outside
+              - column:
+                  name: description
+                  value: good quality
+        - insert:
+            tableName: _range
+            columns:
+              - column:
+                  name: _from
+                  value: 1
+              - column:
+                  name: _to
+                  value: 1000
+        - insert:
+            tableName: sensor
+            columns:
+              - column:
+                  name: name
+                  value: voltmeter
+              - column:
+                  name: model
+                  value: aso-563
+              - column:
+                  name: type
+                  value: voltage
+              - column:
+                  name: unit
+                  value: voltage
+              - column:
+                  name: range_id
+                  value: 3
+              - column:
+                  name: location
+                  value: house
+              - column:
+                  name: description
+                  value: reverse polarity protection

@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-user
+      id: create-range
       author: stepan
       changes:
         - createTable:
-            tableName: _user
+            tableName: _range
             columns:
               - column:
                   name: id
@@ -14,17 +14,12 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: username
-                  type: varchar(40)
+                  name: _from
+                  type: int
                   constraints:
                     nullable: false
               - column:
-                  name: password
-                  type: varchar(60)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: role
-                  type: varchar(30)
+                  name: _to
+                  type: int
                   constraints:
                     nullable: false

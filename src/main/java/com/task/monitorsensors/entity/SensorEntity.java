@@ -1,20 +1,11 @@
 package com.task.monitorsensors.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.task.monitorsensors.entity.converter.TypeConverter;
+import com.task.monitorsensors.entity.converter.UnitConverter;
+import com.task.monitorsensors.entity.enums.Type;
+import com.task.monitorsensors.entity.enums.Unit;
+import jakarta.persistence.*;
 
-
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "sensor")
 public class SensorEntity {
@@ -27,15 +18,81 @@ public class SensorEntity {
 
     private String model;
 
-    private String type;
+    @Convert(converter = TypeConverter.class)
+    private Type type;
 
-    private Integer rangeFrom;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "range_id", referencedColumnName = "id")
+    private RangeEntity range;
 
-    private Integer rangeTo;
-
-    private String unit;
+    @Convert(converter = UnitConverter.class)
+    private Unit unit;
 
     private String location;
 
     private String description;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public RangeEntity getRange() {
+        return range;
+    }
+
+    public void setRange(RangeEntity range) {
+        this.range = range;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public Unit getUnit() {
+        return unit;
+    }
+
+    public void setUnit(Unit unit) {
+        this.unit = unit;
+    }
 }

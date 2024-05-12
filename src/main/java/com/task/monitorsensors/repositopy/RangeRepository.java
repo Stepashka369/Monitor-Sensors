@@ -1,9 +1,9 @@
 package com.task.monitorsensors.repositopy;
 
-import com.task.monitorsensors.entity.UserEntity;
+import com.task.monitorsensors.entity.RangeEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<UserEntity, Long> {
+public interface RangeRepository extends CrudRepository<RangeEntity, Long> {
 }

@@ -34,15 +34,12 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: range_from
-                  type: int
+                  name: range_id
+                  type: bigint
                   constraints:
                     nullable: false
-              - column:
-                  name: range_to
-                  type: int
-                  constraints:
-                    nullable: false
+                    foreignKeyName: fk_range
+                    references: _range(id)
               - column:
                   name: location
                   type: varchar(40)
@@ -53,3 +50,7 @@ databaseChangeLog:
                   type: varchar(200)
                   constraints:
                     nullable: false
+        - addUniqueConstraint:
+            columnNames: name, model
+            constraintName: unique_constraint_name
+            tableName: sensor
