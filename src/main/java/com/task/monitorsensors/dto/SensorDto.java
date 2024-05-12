@@ -1,35 +1,33 @@
 package com.task.monitorsensors.dto;
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class SensorDto {
 
     @NotNull
-    @Size(min = 3, max = 30, message = "The name size must be within the limits [3, 30]")
+    @Size(min = 3, max = 30)
     private String name;
 
     @NotNull
-    @Size(min = 1, max = 15, message = "The model size must be within the limits [1, 15]")
+    @Size(min = 1, max = 15)
     private String model;
 
-    @NotNull(message = "Type can not be empty field")
+    @NotNull()
     private String type;
 
     @Valid
     private RangeDto range;
 
-    @NotNull(message = "Unit can not be empty field")
+    @NotNull()
     private String unit;
 
-    @Max(value = 40, message = "Location field must contain no more than 40 characters")
+    @Size(max = 40)
     private String location;
 
-    @Max(value = 200, message = "Description field must contain no more than 200 characters")
+    @Size(max = 200)
     private String description;
-
 
     public String getName() {
         return name;

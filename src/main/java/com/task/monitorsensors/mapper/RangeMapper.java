@@ -8,6 +8,7 @@ import org.mapstruct.MappingConstants;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface RangeMapper {
 
+
     RangeDto toDTO(RangeEntity entity);
 
     RangeEntity toEntity(RangeDto dto);

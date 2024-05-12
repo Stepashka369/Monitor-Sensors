@@ -1,13 +1,18 @@
 package com.task.monitorsensors.dto;
 
-import jakarta.validation.constraints.Size;
+import com.task.monitorsensors.validation.Range;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 
+@Range
 public class RangeDto {
 
-    //@Size(min = 0, max = Integer.MAX_VALUE, message = "The name size must be within the limits [0, MAX_INT]")
+    @Min(0)
+    @Max(Integer.MAX_VALUE)
     private Integer from;
 
-    //@Size(min = 0, max = Integer.MAX_VALUE, message = "The name size must be within the limits [0, MAX_INT]")
+    @Min(0)
+    @Max(Integer.MAX_VALUE)
     private Integer to;
 
     public Integer getFrom() {

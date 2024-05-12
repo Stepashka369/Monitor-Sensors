@@ -1,10 +1,17 @@
 package com.task.monitorsensors.entity;
 
-import com.task.monitorsensors.entity.converter.TypeConverter;
-import com.task.monitorsensors.entity.converter.UnitConverter;
 import com.task.monitorsensors.entity.enums.Type;
 import com.task.monitorsensors.entity.enums.Unit;
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "sensor")
@@ -18,14 +25,14 @@ public class SensorEntity {
 
     private String model;
 
-    @Convert(converter = TypeConverter.class)
+    @Enumerated(EnumType.STRING)
     private Type type;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "range_id", referencedColumnName = "id")
     private RangeEntity range;
 
-    @Convert(converter = UnitConverter.class)
+    @Enumerated(EnumType.STRING)
     private Unit unit;
 
     private String location;

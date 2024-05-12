@@ -25,12 +25,12 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: type
-                  type: type_enum
+                  type: varchar(25)
                   constraints:
                     nullable: false
               - column:
                   name: unit
-                  type: unit_enum
+                  type: varchar(25)
                   constraints:
                     nullable: false
               - column:

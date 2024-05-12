@@ -23,10 +23,10 @@ databaseChangeLog:
                   value: ac-23
               - column:
                   name: type
-                  value: humidity
+                  value: HUMIDITY
               - column:
                   name: unit
-                  value: bar
+                  value: BAR
               - column:
                   name: range_id
                   value: 1
@@ -56,10 +56,10 @@ databaseChangeLog:
                   value: kd-678
               - column:
                   name: type
-                  value: temperature
+                  value: TEMPERATURE
               - column:
                   name: unit
-                  value: °C
+                  value: CELSIUS
               - column:
                   name: range_id
                   value: 2
@@ -89,10 +89,10 @@ databaseChangeLog:
                   value: aso-563
               - column:
                   name: type
-                  value: voltage
+                  value: VOLTAGE
               - column:
                   name: unit
-                  value: voltage
+                  value: VOLTAGE
               - column:
                   name: range_id
                   value: 3

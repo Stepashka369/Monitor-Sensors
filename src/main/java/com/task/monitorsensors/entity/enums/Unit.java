@@ -1,7 +1,5 @@
 package com.task.monitorsensors.entity.enums;
 
-import org.mapstruct.Named;
-
 public enum Unit {
     BAR("bar"),
     VOLTAGE("voltage"),
