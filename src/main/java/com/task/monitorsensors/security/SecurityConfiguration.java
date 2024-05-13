@@ -1,5 +1,6 @@
 package com.task.monitorsensors.security;
 
+import com.task.monitorsensors.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +18,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
-
 import java.util.List;
 
 @Configuration
@@ -25,11 +25,11 @@ import java.util.List;
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
-    private  JwtAuthenticationFilter jwtAuthenticationFilter;
+    private JwtAuthFilter jwtAuthenticationFilter;
     private UserService userService;
 
     @Autowired
-    public SecurityConfiguration(JwtAuthenticationFilter jwtAuthenticationFilter, UserService userService){
+    public SecurityConfiguration(JwtAuthFilter jwtAuthenticationFilter, UserService userService){
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
         this.userService = userService;
     }
@@ -47,13 +47,13 @@ public class SecurityConfiguration {
                 }))
 
                 .authorizeHttpRequests(request -> request
-//                        .requestMatchers("/authentication/**").permitAll()
-//                        .requestMatchers("/swagger-ui/**", "/swagger-resources/*", "/v3/api-docs/**").permitAll()
-//                        .requestMatchers("/manufacturers/**", "/storehouses/**").hasRole("ADMIN")
-                        .anyRequest().permitAll())
-                .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-//                .authenticationProvider(authenticationProvider())
-//                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                        //.anyRequest().permitAll()
+                        .requestMatchers("/authentication/**").permitAll()
+                        .requestMatchers("/swagger-ui/**", "/swagger-resources/*", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/sensors/**").authenticated())
+                .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .authenticationProvider(authenticationProvider())
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 

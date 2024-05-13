@@ -1,5 +1,6 @@
 package com.task.monitorsensors.security;
 
+import com.task.monitorsensors.entity.UserEntity;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -58,8 +59,7 @@ public class JwtService {
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
         if (userDetails instanceof UserEntity customUserDetails) {
-            claims.put("id", customUserDetails.getId());
-            claims.put("email", customUserDetails.getEmail());
+            claims.put("username", customUserDetails.getUsername());
             claims.put("role", customUserDetails.getRole());
         }
         return generateToken(claims, userDetails);

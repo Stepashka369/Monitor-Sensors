@@ -1,6 +1,6 @@
 package com.task.monitorsensors.security;
 
-import jakarta.validation.Valid;
+import com.task.monitorsensors.exception.ElementAlreadyExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,20 +13,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/authentication")
 public class AuthController {
 
-    private AuthenticationService authenticationService;
+    private AuthService authService;
 
     @Autowired
-    public AuthController(AuthenticationService authenticationService){
-        this.authenticationService = authenticationService;
+    public AuthController(AuthService authService){
+        this.authService = authService;
     }
 
     @PostMapping("/sign-up")
-    public ResponseEntity<JwtAuthenticationResponse> signUp(@RequestBody @Valid SignUpRequest request) {
-        return new ResponseEntity<>(authenticationService.signUp(request), HttpStatus.OK);
+    public ResponseEntity<AuthResponse> signUp(@RequestBody AuthRequest request) throws ElementAlreadyExistsException {
+        return new ResponseEntity<>(authService.signUp(request), HttpStatus.OK);
     }
 
     @PostMapping("/sign-in")
-    public ResponseEntity<JwtAuthenticationResponse> signIn(@RequestBody @Valid SignInRequest request) {
-        return new ResponseEntity<>(authenticationService.signIn(request), HttpStatus.OK);
+    public ResponseEntity<AuthResponse> signIn(@RequestBody AuthRequest request) {
+        return new ResponseEntity<>(authService.signIn(request), HttpStatus.OK);
     }
 }

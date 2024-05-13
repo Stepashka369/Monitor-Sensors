@@ -1,10 +1,10 @@
 package com.task.monitorsensors.security;
 
-public class JwtAuthenticationResponse {
+public class AuthResponse {
 
     private String token;
 
-    public JwtAuthenticationResponse(String token) {
+    public AuthResponse(String token) {
         this.token = token;
     }
 

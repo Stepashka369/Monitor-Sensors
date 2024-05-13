@@ -7,6 +7,7 @@ import com.task.monitorsensors.service.SensorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -28,6 +29,7 @@ public class SensorController {
     }
 
     @GetMapping("/{name}/{model}")
+    @PreAuthorize("hasRole('ADMINISTRATOR')")
     public ResponseEntity<SensorDto> getByNameAndModel(@PathVariable String name,
                                                        @PathVariable String model) throws ElementNotFoundException {
         return new ResponseEntity<>(sensorService.getByNameAndModel(name, model), HttpStatus.OK);
@@ -40,11 +42,13 @@ public class SensorController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMINISTRATOR')")
     public ResponseEntity<SensorDto> add(@RequestBody SensorDto dto) throws ElementAlreadyExistsException, MethodArgumentNotValidException {
         return new ResponseEntity<>(sensorService.save(dto) , HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{name}/{model}")
+    @PreAuthorize("hasRole('ADMINISTRATOR')")
     public ResponseEntity<Void> delete(@PathVariable String name, @PathVariable String model){
         sensorService.deleteByNameAndModel(name, model);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

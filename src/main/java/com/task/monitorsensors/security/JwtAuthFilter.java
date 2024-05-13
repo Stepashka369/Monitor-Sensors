@@ -1,6 +1,6 @@
 package com.task.monitorsensors.security;
 
-import com.stepashka.hibernate.service.impl.UserService;
+import com.task.monitorsensors.service.UserService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,14 +17,14 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 
 @Component
-public class JwtAuthenticationFilter extends OncePerRequestFilter {
+public class JwtAuthFilter extends OncePerRequestFilter {
     public static final String BEARER_PREFIX = "Bearer ";
     public static final String HEADER_NAME = "Authorization";
     private final JwtService jwtService;
     private final UserService userService;
 
     @Autowired
-    public JwtAuthenticationFilter(JwtService jwtService, UserService userService){
+    public JwtAuthFilter(JwtService jwtService, UserService userService){
         this.jwtService = jwtService;
         this.userService = userService;
     }
@@ -42,8 +42,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
-        var jwt = authHeader.substring(BEARER_PREFIX.length());
-        var username = jwtService.extractUsername(jwt);
+        String jwt = authHeader.substring(BEARER_PREFIX.length());
+        String username = jwtService.extractUsername(jwt);
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userService
