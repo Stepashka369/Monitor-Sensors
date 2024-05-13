@@ -1,6 +1,7 @@
 package com.task.monitorsensors.validation;
 
 import com.task.monitorsensors.dto.RangeDto;
+import com.task.monitorsensors.validation.annotation.Range;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

@@ -1,5 +1,7 @@
 package com.task.monitorsensors.dto;
 
+import com.task.monitorsensors.validation.annotation.EnumType;
+import com.task.monitorsensors.validation.annotation.EnumUnit;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -15,12 +17,14 @@ public class SensorDto {
     private String model;
 
     @NotNull()
+    @EnumType
     private String type;
 
     @Valid
     private RangeDto range;
 
     @NotNull()
+    @EnumUnit
     private String unit;
 
     @Size(max = 40)

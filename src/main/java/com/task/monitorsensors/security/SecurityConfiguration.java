@@ -25,14 +25,14 @@ import java.util.List;
 @EnableMethodSecurity
 public class SecurityConfiguration {
 
-//    private  JwtAuthenticationFilter jwtAuthenticationFilter;
-//    private UserService userService;
-//
-//    @Autowired
-//    public SecurityConfiguration(JwtAuthenticationFilter jwtAuthenticationFilter, UserService userService){
-//        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
-//        this.userService = userService;
-//    }
+    private  JwtAuthenticationFilter jwtAuthenticationFilter;
+    private UserService userService;
+
+    @Autowired
+    public SecurityConfiguration(JwtAuthenticationFilter jwtAuthenticationFilter, UserService userService){
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+        this.userService = userService;
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -57,22 +57,22 @@ public class SecurityConfiguration {
         return http.build();
     }
 
-//    @Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
-//
-//    @Bean
-//    public AuthenticationProvider authenticationProvider() {
-//        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-//        authProvider.setUserDetailsService(userService.userDetailsService());
-//        authProvider.setPasswordEncoder(passwordEncoder());
-//        return authProvider;
-//    }
-//
-//    @Bean
-//    public AuthenticationManager authenticationManager(AuthenticationConfiguration config)
-//            throws Exception {
-//        return config.getAuthenticationManager();
-//    }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userService.userDetailsService());
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config)
+            throws Exception {
+        return config.getAuthenticationManager();
+    }
 }

@@ -1,5 +1,6 @@
-package com.task.monitorsensors.validation;
+package com.task.monitorsensors.validation.annotation;
 
+import com.task.monitorsensors.validation.EnumTypeValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 import java.lang.annotation.Documented;
@@ -9,11 +10,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Documented
-@Constraint(validatedBy = RangeValidator.class)
-@Target({ElementType.TYPE})
+@Constraint(validatedBy = EnumTypeValidator.class)
+@Target({ElementType.FIELD, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Range {
-    String message() default "From must be less than to";
+public @interface EnumType {
+
+    String message() default "Enum type does not contain such constant";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

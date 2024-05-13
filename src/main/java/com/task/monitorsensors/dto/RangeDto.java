@@ -1,6 +1,6 @@
 package com.task.monitorsensors.dto;
 
-import com.task.monitorsensors.validation.Range;
+import com.task.monitorsensors.validation.annotation.Range;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 
