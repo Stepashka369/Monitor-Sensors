@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=agsr
+  MonitorSensors:
+    image: 'monitor-sensors'
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    container_name: monitor-sensors
+    depends_on:
+      - postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/agsr
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=root
