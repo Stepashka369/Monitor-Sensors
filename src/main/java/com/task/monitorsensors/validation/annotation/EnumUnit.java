@@ -1,7 +1,6 @@
 package com.task.monitorsensors.validation.annotation;
 
 import com.task.monitorsensors.validation.EnumUnitValidator;
-import com.task.monitorsensors.validation.RangeValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 import java.lang.annotation.Documented;

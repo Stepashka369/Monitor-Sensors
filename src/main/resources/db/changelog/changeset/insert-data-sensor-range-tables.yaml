@@ -7,6 +7,9 @@ databaseChangeLog:
             tableName: _range
             columns:
               - column:
+                  name: id
+                  value: 0748f5cc-b9a3-442f-8cb6-b04cb5db4c4e
+              - column:
                   name: _from
                   value: 100
               - column:
@@ -15,6 +18,9 @@ databaseChangeLog:
         - insert:
             tableName: sensor
             columns:
+              - column:
+                  name: id
+                  value: 35f93d8a-d525-4841-9df1-f146ab2132d8
               - column:
                   name: name
                   value: barometer
@@ -29,7 +35,7 @@ databaseChangeLog:
                   value: BAR
               - column:
                   name: range_id
-                  value: 1
+                  value: 0748f5cc-b9a3-442f-8cb6-b04cb5db4c4e
               - column:
                   name: location
                   value: kitchen
@@ -40,6 +46,9 @@ databaseChangeLog:
             tableName: _range
             columns:
               - column:
+                  name: id
+                  value: 8833a86e-3f43-4f3d-b181-15915589c11d
+              - column:
                   name: _from
                   value: 25
               - column:
@@ -48,6 +57,9 @@ databaseChangeLog:
         - insert:
             tableName: sensor
             columns:
+              - column:
+                  name: id
+                  value: 7df7b30a-653b-435c-92a4-74eadee1a971
               - column:
                   name: name
                   value: thermometer
@@ -62,7 +74,7 @@ databaseChangeLog:
                   value: CELSIUS
               - column:
                   name: range_id
-                  value: 2
+                  value: 8833a86e-3f43-4f3d-b181-15915589c11d
               - column:
                   name: location
                   value: outside
@@ -73,6 +85,9 @@ databaseChangeLog:
             tableName: _range
             columns:
               - column:
+                  name: id
+                  value: 5877e6ce-df9f-46c5-9b64-f07a13ffb04d
+              - column:
                   name: _from
                   value: 1
               - column:
@@ -81,6 +96,9 @@ databaseChangeLog:
         - insert:
             tableName: sensor
             columns:
+              - column:
+                  name: id
+                  value: cbe3feba-53e2-44a9-9b39-95560604fdca
               - column:
                   name: name
                   value: voltmeter
@@ -95,7 +113,7 @@ databaseChangeLog:
                   value: VOLTAGE
               - column:
                   name: range_id
-                  value: 3
+                  value: 5877e6ce-df9f-46c5-9b64-f07a13ffb04d
               - column:
                   name: location
                   value: house

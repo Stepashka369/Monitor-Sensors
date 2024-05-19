@@ -24,12 +24,12 @@ public interface SensorMapper {
     }
 
     @Named("convertTypeToEnum")
-    default Type convertTypeToEnum(String type){
+    default Type convertTypeToEnum(String type) {
         return Type.fromString(type);
     }
 
     @Named("convertUnitToEnum")
-    default Unit convertUnitToEnum(String unit){
+    default Unit convertUnitToEnum(String unit) {
         return Unit.fromString(unit);
     }
 

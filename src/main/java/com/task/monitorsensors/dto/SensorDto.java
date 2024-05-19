@@ -5,8 +5,11 @@ import com.task.monitorsensors.validation.annotation.EnumUnit;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import java.util.UUID;
 
 public class SensorDto {
+
+    private UUID id;
 
     @NotNull
     @Size(min = 3, max = 30)
@@ -32,6 +35,14 @@ public class SensorDto {
 
     @Size(max = 200)
     private String description;
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

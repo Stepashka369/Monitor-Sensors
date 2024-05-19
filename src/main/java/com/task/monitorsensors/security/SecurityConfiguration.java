@@ -47,7 +47,6 @@ public class SecurityConfiguration {
                 }))
 
                 .authorizeHttpRequests(request -> request
-                        //.anyRequest().permitAll()
                         .requestMatchers("/authentication/**").permitAll()
                         .requestMatchers("/swagger-ui/**", "/swagger-resources/*", "/v3/api-docs/**").permitAll()
                         .requestMatchers("/sensors/**").authenticated())

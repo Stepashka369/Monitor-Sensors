@@ -8,8 +8,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: bigint
-                  autoIncrement: true
+                  type: uuid
                   constraints:
                     primaryKey: true
                     nullable: false
@@ -35,7 +34,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: range_id
-                  type: bigint
+                  type: UUID
                   constraints:
                     nullable: false
                     foreignKeyName: fk_range
@@ -50,7 +49,3 @@ databaseChangeLog:
                   type: varchar(200)
                   constraints:
                     nullable: false
-        - addUniqueConstraint:
-            columnNames: name, model
-            constraintName: unique_constraint_name
-            tableName: sensor

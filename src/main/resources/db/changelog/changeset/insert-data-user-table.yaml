@@ -7,6 +7,9 @@ databaseChangeLog:
             tableName: _user
             columns:
               - column:
+                  name: id
+                  value: da837b81-675c-48e6-9953-82fef7b11c4a
+              - column:
                   name: username
                   value: admin
               - column:
