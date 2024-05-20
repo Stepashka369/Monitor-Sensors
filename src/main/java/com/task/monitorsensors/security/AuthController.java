@@ -22,6 +22,7 @@ public class AuthController {
         this.authService = authService;
     }
 
+    @PostMapping("/sign-up")
     public ResponseEntity<AuthResponse> signUp(@RequestBody AuthRequest request) throws ElementAlreadyExistsException {
         return new ResponseEntity<>(authService.signUp(request), HttpStatus.OK);
     }
