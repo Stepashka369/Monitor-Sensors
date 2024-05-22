@@ -1,0 +1,89 @@
+openapi: 3.0.3
+info: 
+  title: "SensorMonitor API"
+  description: "This simple restfull web-application performs CRUD-operations with sensors stored in PostgreSQL database. The application has authorization based on jwt tokens. Spring boot, Spring security, PostgreSQL, OpenAPI were used in this project."
+  version: "1.0.0"
+  contact:
+    name: "SensorMonitoAPI"
+    email: "sensor.monitor.api@gmail.com"
+    
+servers:
+  - url: http://localhost:8080
+    description: main web-application server
+
+paths:
+  /sensors:
+    get:
+      tags:
+        - All Sensors From DB 
+      summary: "Retrive all sensors from database."
+      description: "This operation extracts all information about avaible sensors from database."
+      operationId: AllSensorsFromDB
+      responses:
+        200:
+          description: Succesful response.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Range'
+    
+components:
+  schemas:
+    Range:
+      title: Range
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Range id presented in UUID.
+          example: e113d3ec-a0ef-47f5-b7f9-27289b8804a1
+        from:
+          type: integer
+          format: int32
+          description: Lower range limit.
+          example: 10
+        to:
+          type: integer
+          format: int32
+          description: Upper range limit.
+          example: 100
+    Sensor:
+      title: Sensor
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Range id presented in UUID.
+          example: e113d3ec-a0ef-47f5-b7f9-27289b8804a1
+        name:
+          type: string
+          description: Sensor name.
+          example: Barometr
+        model:
+          type: string
+          description: Sensor model.
+          example: ab-234
+        type:
+          type: string
+          format: enum
+          description: This field gets one value from next list(pressure, voltage, temperature, humidity). 
+          example: pressure
+        range:
+          $ref: '#/components/schemas/Range'
+        unit:
+          type: string
+          format: enum
+          description: This field gets one value from next list(bar, voltage, °C, %). 
+          example: bar
+        location:
+          type: string
+          description: Location where you should place the sensor.
+          example: kitchen
+        description:
+          type: string
+          description: Sensor description. Its advantages and disadvantages.
+          example: good quality

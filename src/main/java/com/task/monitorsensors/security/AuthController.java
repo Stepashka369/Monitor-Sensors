@@ -1,7 +1,6 @@
 package com.task.monitorsensors.security;
 
 import com.task.monitorsensors.exception.ElementAlreadyExistsException;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/authentication")
-@Tag(name = "Authentication controller", description = "Perform sign in and sign up operations")
 public class AuthController {
 
     private AuthService authService;
