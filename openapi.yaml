@@ -17,19 +17,74 @@ paths:
       tags:
         - All Sensors From DB 
       summary: "Retrive all sensors from database."
-      description: "This operation extracts all information about avaible sensors from database."
+      description: "This operation extracts all information about avaible sensors from database. **Note can be performed by users with roles: ADMIN, VIEWER.**"
       operationId: AllSensorsFromDB
       responses:
         200:
-          description: Succesful response.
+          description: Returns array with sensors.
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Range'
+                  $ref: '#/components/schemas/Sensor'
+        403:
+          description: Authentication errors.
+          
+    post:
+      tags:
+        - Add Or Update sensor
+      summary: "Add new sensor or update existing."
+      description: "This operation update existing or add new sensor to database. **Note can be performed by users with roles: ADMIN.**"
+      operationId: AddUpdateSensor
+      requestBody:
+        description: "Sensor information."
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Sensor'
+      responses:
+        200:
+          description: Returns saved or updated sensor.
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/Sensor'
+        400:
+          description: Validation error.
+        403:
+          description: Authentication errors.
+  
+  /sensors/{id}:
+    get:
+      tags:
+        - Sensor By ID
+      summary: "Retrive sensor from database by id."
+      description: "This operation extracts information about sensors from database by its id. **Note can be performed by users with roles: ADMIN, VIEWER.**"
+      operationId: GetSensorById
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        200:
+          description: Sensor from database
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/Sensor'
+        
     
+    
+  
 components:
+  parameters:
+    id:
+      name: id
+      in: query
+      description: "Sensor id from database presented in UUID."
+      example: e113d3ec-a0ef-47f5-b7f9-27289b8804a1
+      schema:
+        type: string
   schemas:
     Range:
       title: Range
@@ -87,3 +142,24 @@ components:
           type: string
           description: Sensor description. Its advantages and disadvantages.
           example: good quality
+    AuthRequest:
+      title: AuthRequest
+      type: object
+      properties:
+        username:
+          type: string
+          description: Username to login.
+          example: Alex
+        password:
+          type: string
+          description: Password associated with username.
+          example: a#4$*32f.s
+    AuthResponse:
+      title: AuthResponse
+      type: object
+      properties:
+        token:
+          type: string
+          description: Jwt token for accessing resources.
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+      
